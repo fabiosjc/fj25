@@ -5,27 +5,30 @@ import java.util.List;
 import javax.persistence.EntityManager;
 
 public class DAO<T> {
-	private final EntityManager em;
-	private final Class<T> entityClass;
 
-	DAO(EntityManager em, Class<T> entityClass){
+	private final Class<T> classe;
+	private final EntityManager em;
+
+	public DAO(EntityManager em, Class<T> classe) {
 		this.em = em;
-		this.entityClass = entityClass;
+		this.classe = classe;
+
 	}
 	
-	void adiciona(T entity){
-		this.em.persist(entity);
+	public void adiciona(T t) {
+		this.em.persist(t);
 	}
 	
-	void remove(T entity){
-		this.em.remove(entity);
+	public void remove(T t) {
+		this.em.remove(t);
 	}
 	
-	T busca(Long id){
-		return this.em.getReference(entityClass, id);
+	public T busca(Integer id) {
+		return this.em.find(classe,id);
 	}
 	
-	List<T> lista(){
-		return this.em.createQuery("select e from " + entityClass.getName() + " e").getResultList();
+	public List<T> lista(){
+		return this.em.createQuery("from "+classe.getName()).getResultList();
 	}
+	
 }
