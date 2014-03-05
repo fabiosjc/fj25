@@ -1,4 +1,6 @@
+
 package br.com.caelum.financas.modelo;
+
 
 import java.math.BigDecimal;
 import java.util.Calendar;
@@ -10,71 +12,75 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+
 
 @Entity
 public class Movimentacao {
 
-	@Id
-	@GeneratedValue
-	private Long id;
-	private String descricao;
-	private Date date;
-	private BigDecimal valor;
-	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
-	private Conta conta;
-	@Enumerated(EnumType.STRING)
-	private TipoMovimentacao tipoMovimentacao;
+    @Id
+    @GeneratedValue
+    private Long id;
+    private String descricao;
+    private Date date;
+    private BigDecimal valor;
+    @JoinColumn(name = "fk_movimentacao_conta")
+    @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.REMOVE }, optional = false)
+    private Conta conta;
+    @Enumerated(EnumType.STRING)
+    private TipoMovimentacao tipoMovimentacao;
 
-	 public Long getId() {
-	 return id;
-	 }
-	 public void setId(Long id) {
-	 this.id = id;
-	 }
+    public Long getId() {
+        return this.id;
+    }
 
-	public String getDescricao() {
-		return descricao;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public Movimentacao setDescricao(String descricao) {
-		this.descricao = descricao;
-		return this;
-	}
+    public String getDescricao() {
+        return this.descricao;
+    }
 
-	public Date getDate() {
-		return date;
-	}
+    public Movimentacao setDescricao(String descricao) {
+        this.descricao = descricao;
+        return this;
+    }
 
-	public Movimentacao setDate(Date date) {
-		this.date = date;
-		return this;
-	}
+    public Date getDate() {
+        return this.date;
+    }
 
-	public BigDecimal getValor() {
-		return valor;
-	}
+    public Movimentacao setDate(Date date) {
+        this.date = date;
+        return this;
+    }
 
-	public Movimentacao setValor(BigDecimal valor) {
-		this.valor = valor;
-		return this;
-	}
+    public BigDecimal getValor() {
+        return this.valor;
+    }
 
-	public Conta getConta() {
-		return conta;
-	}
+    public Movimentacao setValor(BigDecimal valor) {
+        this.valor = valor;
+        return this;
+    }
 
-	public void setConta(Conta conta) {
-		this.conta = conta;
-	}
+    public Conta getConta() {
+        return this.conta;
+    }
 
-	public TipoMovimentacao getTipoMovimentacao() {
-		return tipoMovimentacao;
-	}
+    public void setConta(Conta conta) {
+        this.conta = conta;
+    }
 
-	public Movimentacao setTipoMovimentacao(TipoMovimentacao tipoMovimentacao) {
-		this.tipoMovimentacao = tipoMovimentacao;
-		return this;
-	}
+    public TipoMovimentacao getTipoMovimentacao() {
+        return this.tipoMovimentacao;
+    }
+
+    public Movimentacao setTipoMovimentacao(TipoMovimentacao tipoMovimentacao) {
+        this.tipoMovimentacao = tipoMovimentacao;
+        return this;
+    }
 
 }

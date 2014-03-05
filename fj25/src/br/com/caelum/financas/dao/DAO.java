@@ -26,6 +26,6 @@ public class DAO<T> {
 	}
 	
 	List<T> lista(){
-		return this.em.createQuery("select from e " + entityClass.getName() + " e").getResultList();
+		return this.em.createQuery("select e from " + entityClass.getName() + " e").getResultList();
 	}
 }
