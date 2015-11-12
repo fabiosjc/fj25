@@ -13,3 +13,8 @@
 #Others
 apache-tomcat*
 fj25/bin/log4j.properties
+
+# IntelliJ Files #
+.idea
+out
+fj25/build

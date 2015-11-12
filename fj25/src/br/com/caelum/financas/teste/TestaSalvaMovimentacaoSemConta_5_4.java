@@ -3,11 +3,10 @@ package br.com.caelum.financas.teste;
 
 
 import java.math.BigDecimal;
-import java.util.Date;
+import java.util.Calendar;
 
 import javax.persistence.EntityManager;
 
-import br.com.caelum.financas.dao.MovimentacaoDAO;
 import br.com.caelum.financas.infra.JPAUtil;
 import br.com.caelum.financas.modelo.Movimentacao;
 import br.com.caelum.financas.modelo.TipoMovimentacao;
@@ -27,7 +26,7 @@ public class TestaSalvaMovimentacaoSemConta_5_4 {
 
         Movimentacao mov = new Movimentacao();
         mov.setTipoMovimentacao(TipoMovimentacao.ENTRADA);
-        mov.setDate(new Date());
+        mov.setData(Calendar.getInstance());
         mov.setDescricao("Pagamento");
         mov.setValor(new BigDecimal("678.00"));
 

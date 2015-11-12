@@ -1,4 +1,6 @@
+
 package br.com.caelum.financas.modelo;
+
 
 import java.math.BigDecimal;
 import java.util.Calendar;
@@ -10,67 +12,74 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+
 @Entity
 public class Movimentacao {
-	@Id
-	@GeneratedValue
-	private Integer id;
-	private String descricao;
-	private Calendar data;
-	private BigDecimal valor;
-	
-	@ManyToOne
-	private Conta conta;
-	
-	@Enumerated(EnumType.STRING)
-	private TipoMovimentacao tipoMovimentacao;
 
-	public TipoMovimentacao getTipoMovimentacao() {
-		return tipoMovimentacao;
-	}
+    @Id
+    @GeneratedValue
+    private Long id;
+    private String descricao;
+    private Calendar data;
+    private BigDecimal valor;
 
-	public void setTipoMovimentacao(TipoMovimentacao tipoMovimentacao) {
-		this.tipoMovimentacao = tipoMovimentacao;
-	}
+    @ManyToOne
+    private Conta conta;
 
-	public Integer getId() {
-		return id;
-	}
+    @Enumerated(EnumType.STRING)
+    private TipoMovimentacao tipoMovimentacao;
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    public TipoMovimentacao getTipoMovimentacao() {
+        return this.tipoMovimentacao;
+    }
 
-	public String getDescricao() {
-		return descricao;
-	}
+    public Movimentacao setTipoMovimentacao(TipoMovimentacao tipoMovimentacao) {
+        this.tipoMovimentacao = tipoMovimentacao;
+        return this;
+    }
 
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
+    public Long getId() {
+        return this.id;
+    }
 
-	public Calendar getData() {
-		return data;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setData(Calendar data) {
-		this.data = data;
-	}
+    public String getDescricao() {
+        return this.descricao;
+    }
 
-	public BigDecimal getValor() {
-		return valor;
-	}
+    public Movimentacao setDescricao(String descricao) {
+        this.descricao = descricao;
+        return this;
+    }
 
-	public void setValor(BigDecimal valor) {
-		this.valor = valor;
-	}
+    public Calendar getData() {
+        return this.data;
+    }
 
-	public Conta getConta() {
-		return conta;
-	}
+    public Movimentacao setData(Calendar data) {
+        this.data = data;
+        return this;
+    }
 
-	public void setConta(Conta conta) {
-		this.conta = conta;
-	}
+    public BigDecimal getValor() {
+        return this.valor;
+    }
+
+    public Movimentacao setValor(BigDecimal valor) {
+        this.valor = valor;
+        return this;
+    }
+
+    public Conta getConta() {
+        return this.conta;
+    }
+
+    public Movimentacao setConta(Conta conta) {
+        this.conta = conta;
+        return this;
+    }
 
 }

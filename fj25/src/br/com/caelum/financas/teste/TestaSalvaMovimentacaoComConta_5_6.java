@@ -3,7 +3,7 @@ package br.com.caelum.financas.teste;
 
 
 import java.math.BigDecimal;
-import java.util.Date;
+import java.util.Calendar;
 
 import javax.persistence.EntityManager;
 
@@ -34,7 +34,7 @@ public class TestaSalvaMovimentacaoComConta_5_6 {
 
         Movimentacao mov = new Movimentacao();
         mov.setTipoMovimentacao(TipoMovimentacao.ENTRADA);
-        mov.setDate(new Date());
+        mov.setData(Calendar.getInstance());
         mov.setDescricao("Pagamento");
         mov.setValor(new BigDecimal("678.00"));
         mov.setConta(conta);
