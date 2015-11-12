@@ -18,3 +18,4 @@ fj25/bin/log4j.properties
 .idea
 out
 fj25/build
+fj25/bin/
