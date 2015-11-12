@@ -25,20 +25,16 @@ public class UsuarioEstabelecimentoTest {
     public void testSalvaAssociacao() throws Exception {
         em.getTransaction().begin();
 
-        Usuario usuario1 =  Usuario.create("usuario1");
-        Usuario usuario2 =  Usuario.create("usuario2");
+        Usuario usuario1 =  this.em.find(Usuario.class, 19L);
+        Usuario usuario2 =  this.em.find(Usuario.class, 20L);
 
-        Estabelecimento estabelecimentoA =  new Estabelecimento("Estabeleciento A");
-        Estabelecimento estabelecimentoB =  new Estabelecimento("Estabeleciento B");
+        Estabelecimento estabelecimentoA =  this.em.find(Estabelecimento.class, 9L);
+        Estabelecimento estabelecimentoB =  this.em.find(Estabelecimento.class, 14L);
 
         UsuarioEstabelecimento usuarioEstabelecimento = new UsuarioEstabelecimento();
         usuarioEstabelecimento.addUsuario(usuario1).addUsuario(usuario2);
         usuarioEstabelecimento.addEstabelecimento(estabelecimentoA).addEstabelecimento(estabelecimentoB);
 
-        em.persist(estabelecimentoA);
-        em.persist(estabelecimentoB);
-        em.persist(usuario1);
-        em.persist(usuario2);
         em.persist(usuarioEstabelecimento);
         em.getTransaction().commit();
         em.close();

@@ -2,9 +2,7 @@ package br.com.caelum.experimentos.modelo;
 
 import org.hibernate.annotations.ManyToAny;
 
-import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,9 +12,13 @@ import java.util.List;
 @Entity
 public class UsuarioEstabelecimento extends EntityId {
 
-    @ManyToMany
+    @ManyToMany(targetEntity = Usuario.class)
+    @JoinTable(name = "UsuarioEstabelecimento", joinColumns = {@JoinColumn(name = "usuario_id")}, inverseJoinColumns = { @JoinColumn(name = "id", insertable = false, nullable = false)})
     private List<Usuario> usuarios = new ArrayList<Usuario>();
-    @ManyToMany
+
+    @ManyToMany(targetEntity = Estabelecimento.class)
+    @JoinColumn(name = "estabelecimento_id")
+    @JoinTable(name = "UsuarioEstabelecimento", joinColumns = {@JoinColumn(name = "estabelecimento_id")}, inverseJoinColumns = { @JoinColumn(name = "id", insertable = false, nullable = false)})
     private List<Estabelecimento> estabelecimentos = new ArrayList<Estabelecimento>();
 
     public UsuarioEstabelecimento addUsuario(Usuario usuario) {
@@ -28,6 +30,7 @@ public class UsuarioEstabelecimento extends EntityId {
         this.estabelecimentos.add(estabelecimento);
         return this;
     }
+
 
     public List<Estabelecimento> getEstabelecimentos() {
         return estabelecimentos;

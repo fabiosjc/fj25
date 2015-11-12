@@ -15,6 +15,9 @@ public class Estabelecimento {
     private Long id;
     private String nomeComercial;
 
+    public Estabelecimento() {
+    }
+
     public Estabelecimento(String nomeComercial) {
         this.nomeComercial = nomeComercial;
     }
