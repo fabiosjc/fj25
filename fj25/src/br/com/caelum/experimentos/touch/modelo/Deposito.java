@@ -1,4 +1,4 @@
-package br.com.caelum.experimentos.modelo;
+package br.com.caelum.experimentos.touch.modelo;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

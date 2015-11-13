@@ -1,4 +1,4 @@
-import br.com.caelum.experimentos.modelo.Usuario;
+import br.com.caelum.experimentos.touch.modelo.Usuario;
 import br.com.caelum.financas.infra.JPAUtil;
 import org.junit.Test;
 
